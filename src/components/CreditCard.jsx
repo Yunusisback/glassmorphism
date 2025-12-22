@@ -1,42 +1,66 @@
 import Tilt from "react-parallax-tilt";
-import { motion } from "framer-motion";
+import { userData } from "../utils/constants";
 
-export default function CreditCard() {
+function CreditCard() {
   return (
-    <Tilt tiltMaxAngleX={20} tiltMaxAngleY={20} tiltReverse glareEnable glareMaxOpacity={0.3} className="w-full perspective-1000">
-      <motion.div 
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="relative h-60 w-full rounded-[2.5rem] p-8 overflow-hidden border border-white/20 backdrop-filter backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5 shadow-2xl shadow-gold/20 transform-style-3d"
-      >
-        <div className="flex justify-between items-start relative z-10">
-          <h2 className="text-3xl font-black italic tracking-tighter text-white drop-shadow-md">VISA</h2>
-          <div className="w-12 h-8 bg-gold/30 rounded-lg border border-gold/50 flex items-center justify-center shadow-inner">
-            <div className="w-7 h-5 bg-gold/60 rounded-sm"></div>
-          </div>
-        </div>
-        <div className="mt-14 text-xl font-mono tracking-[0.3em] text-white/90 relative z-10 drop-shadow">
-          **** **** **** 8828
-        </div>
-        <div className="mt-auto flex justify-between items-end relative z-10">
-          <p className="text-3xl font-bold text-gold drop-shadow-lg">$74,330</p>
-          <div className="text-right text-[10px] text-gray-300 font-bold uppercase">
-            <p>09/27</p>
-          </div>
-        </div>
-        <div className="absolute inset-0 opacity-30 z-0 pointer-events-none">
-          <svg viewBox="0 0 400 200" className="w-full h-full">
-            <path d="M0,150 Q150,50 400,150" fill="none" stroke="#ffdf00" strokeWidth="2" className="animate-pulse" />
-            <circle cx="200" cy="100" r="50" fill="url(#holoGrad)" opacity="0.2" />
+    <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.3} glareColor="#FFD700" className="w-full">
+      <div className="relative aspect-[1.586/1] w-full rounded-4xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)] transition-transform hover:scale-[1.02] border border-white/10 bg-linear-to-br from-gray-900 via-gray-800 to-black">
+
+   
+        <div className="absolute inset-0">
+
+          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 400 250">
+            <circle cx="80" cy="180" r="60" fill="url(#g)" />
+            <circle cx="320" cy="100" r="80" fill="url(#g)" />
             <defs>
-              <radialGradient id="holoGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                <stop offset="0%" stopColor="#ffdf00" stopOpacity="1" />
-                <stop offset="100%" stopColor="#ffdf00" stopOpacity="0" />
+              <radialGradient id="g">
+                <stop offset="0%" stopColor="#FFD700" stopOpacity="1" />
+                <stop offset="100%" stopColor="#FFD700" stopOpacity="0" />
               </radialGradient>
             </defs>
           </svg>
         </div>
-      </motion.div>
+
+        {/* Kart içeriği */}
+        <div className="relative z-10 h-full p-8 flex flex-col justify-between">
+
+          {/* Bakiye ve VISA logosu */}
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="text-[10px] text-gray-400 font-bold tracking-widest uppercase mb-2">Current Balance</p>
+              <h3 className="text-3xl font-black text-white tracking-tighter">
+                {userData.balance.split('.')[0]}.<span className="text-lg text-gray-400">{userData.balance.split('.')[1]}</span>
+              </h3>
+            </div>
+            <h2 className="text-2xl font-black italic text-white/90">VISA</h2>
+          </div>
+
+          {/*  Kart sahibi bilgileri ve numara */}
+          <div className="flex justify-between items-end">
+            <div className="flex gap-6">
+
+              {/* Kart sahibi */}
+              <div className="text-[10px] uppercase text-gray-400 font-bold tracking-widest">
+                <p className="mb-1.5">Card Holder</p>
+                <p className="text-white text-sm tracking-normal font-bold">{userData.fullName}</p>
+              </div>
+
+              {/* Son kullanma tarihi */}
+              <div className="text-[10px] uppercase text-gray-400 font-bold tracking-widest">
+                <p className="mb-1.5">Expires</p>
+                <p className="text-white text-sm tracking-normal font-bold">{userData.cardExpiry}</p>
+              </div>
+            </div>
+
+            {/* Kart numarası */}
+            <div className="text-lg font-mono text-white/90 tracking-[0.3em] font-bold">
+              {userData.cardNumber}
+            </div>
+          </div>
+        </div>
+      </div>
     </Tilt>
   );
 }
+
+export default CreditCard;

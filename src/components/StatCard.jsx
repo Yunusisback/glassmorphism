@@ -1,50 +1,50 @@
 import Tilt from "react-parallax-tilt";
-import { motion } from "framer-motion";
-import { AreaChart, Area, ResponsiveContainer } from "recharts";
+import { TrendingUp } from "lucide-react";
+import GlassCard from "./cards/GlassCard";
 
-export default function StatCard({ title, value, trend, data, color = "#ffdf00" }) {
+function StatCard({ title, value, trend, data, icon: Icon, color = "#FFD700" }) {
+
+  // Maksimum değeri bul (grafik normalizasyonu için)
+  const maxVal = Math.max(...data.map(d => d.val));
+
   return (
-    <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} glareEnable glareMaxOpacity={0.2} className="w-full">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="relative bg-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 shadow-2xl shadow-gold/10 overflow-hidden"
-      >
-        <div className="flex justify-between items-center mb-2 relative z-10">
-          <span className="text-xs uppercase tracking-wider text-gray-300 font-semibold">
-            {title}
-          </span>
-          <span className={`text-xs font-bold ${trend > 0 ? 'text-green-400' : 'text-red-400'}`}>
-            {trend > 0 ? '+' : ''}{trend}%
-          </span>
+    <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2000} className="h-full">
+      <GlassCard className="h-full flex flex-col justify-between">
+
+        {/*İkon ve trend göstergesi */}
+        <div className="flex justify-between items-start mb-2">
+          <div className="p-3 rounded-2xl bg-linear-to-br from-white/5 to-transparent border border-white/5">
+            <Icon size={20} style={{ color }} />
+          </div>
+          <div className={`flex items-center gap-1 px-2 py-1 rounded-lg ${trend > 0 ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'} border border-white/5`}>
+            {trend > 0 ? <TrendingUp size={12} /> : <TrendingUp size={12} className="rotate-180" />}
+            <span className="text-[10px] font-bold">{Math.abs(trend)}%</span>
+          </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-white mb-4 relative z-10 drop-shadow-md">{value}</h3>
-
-        <div className="h-20 relative z-10">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-              <defs>
-                <linearGradient id={`gradient-${title}`} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor={color} stopOpacity={0.5} />
-                  <stop offset="100%" stopColor={color} stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <Area
-                type="monotone"
-                dataKey="val"
-                stroke={color}
-                strokeWidth={2}
-                fill={`url(#gradient-${title})`}
-                dot={false}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+        {/* Ana değer ve başlık */}
+        <div>
+          <h3 className="text-3xl font-black text-white tracking-tight">{value}</h3>
+          <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mt-1">{title}</p>
         </div>
 
-        <div className="absolute inset-0 opacity-10 z-0 pointer-events-none bg-gradient-to-br from-white/10 to-transparent" />
-      </motion.div>
+        {/* Mini bar chart  */}
+        <div className="flex items-end gap-1 h-12 mt-4 opacity-40">
+          {data.map((d, i) => (
+            <div
+              key={i}
+              className="flex-1 rounded-t transition-all duration-300"
+              style={{
+                height: `${(d.val / maxVal) * 100}%`,
+                backgroundColor: color,
+                boxShadow: `0 0 8px ${color}40`
+              }}
+            />
+          ))}
+        </div>
+      </GlassCard>
     </Tilt>
   );
 }
+
+export default StatCard;

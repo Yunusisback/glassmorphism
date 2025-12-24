@@ -1,21 +1,16 @@
 @import "tailwindcss";
-@import "./styles/animations.css";
 
-:root {
-  color: white;
+html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  font-family: 'Inter', sans-serif;
-  background-color: #030303;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; 
+  position: fixed; 
 }
 
-body {
-  background-color: #030303;
-  margin: 0;
+
+:root {
+  background-color: #000; 
 }
 
-/* Hide scrollbar */
-::-webkit-scrollbar { 
-  display: none; 
-}

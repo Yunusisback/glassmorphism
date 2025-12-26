@@ -136,7 +136,7 @@ export const applySteps = [
   {
     step: "1",
     title: "Online Başvuru",
-    description: "Formu doldurun, kimlik bilgilerinizi yükleyin"
+    description: "Formu doldurun ve gerekli bilgileri sağlayın"
   },
   {
     step: "2",

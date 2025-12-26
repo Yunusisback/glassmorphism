@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 
 function Button({ children, variant = "primary", size = "md", className = "", ...props }) {
 
-  const baseStyles = "relative overflow-hidden font-black uppercase tracking-wider rounded-xl md:rounded-2xl transition-all duration-300 border flex items-center justify-center gap-2";
+  const baseStyles = "relative overflow-hidden font-black uppercase tracking-wider rounded-xl md:rounded-2xl transition-all duration-300 border flex items-center justify-center gap-2 touch-manipulation active:scale-95";
   
   const variants = {
-    primary: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-white/20 shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] md:hover:-translate-y-1",
-    secondary: "bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white/20 hover:border-white/40 shadow-lg",
-    outline: "bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white/60 active:bg-white/5"
+    primary: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-white/20 shadow-[0_10px_20px_rgba(6,182,212,0.3)] active:shadow-[0_0_30px_rgba(6,182,212,0.5)] md:hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] md:hover:-translate-y-1",
+    secondary: "bg-white/10 backdrop-blur-md text-white border-white/20 active:bg-white/20 active:border-white/40 md:hover:bg-white/20 md:hover:border-white/40 shadow-lg",
+    outline: "bg-transparent text-white border-white/30 active:bg-white/10 active:border-white/60 md:hover:bg-white/10 md:hover:border-white/60"
   };
   
 
@@ -19,8 +19,6 @@ function Button({ children, variant = "primary", size = "md", className = "", ..
 
   return (
     <motion.button
-     
-      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.95 }}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}

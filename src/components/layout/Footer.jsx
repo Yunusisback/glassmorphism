@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
-          {/* Logo ve Hakkında  */}
+          {/* Logo ve hakkında  */}
           <div className="space-y-6 text-center md:text-left">
             <h3 className="text-2xl font-black italic tracking-tighter text-white">SeaGlass</h3>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
@@ -22,9 +22,9 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <h4 className="font-bold mb-6 uppercase tracking-[0.2em] text-[10px] text-cyan-400">Kurumsal</h4>
             <ul className="space-y-4 text-sm text-white/60 font-medium">
-              <li className="hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Hakkımızda</li>
-              <li className="hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Güvenlik</li>
-              <li className="hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Sözleşmeler</li>
+              <li className="active:text-cyan-400 md:hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Hakkımızda</li>
+              <li className="active:text-cyan-400 md:hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Güvenlik</li>
+              <li className="active:text-cyan-400 md:hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Sözleşmeler</li>
             </ul>
           </div>
 
@@ -32,9 +32,9 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <h4 className="font-bold mb-6 uppercase tracking-[0.2em] text-[10px] text-cyan-400">Destek</h4>
             <ul className="space-y-4 text-sm text-white/60 font-medium">
-              <li className="hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">SSS</li>
-              <li className="hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">İletişim</li>
-              <li className="hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Şubeler</li>
+              <li className="active:text-cyan-400 md:hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">SSS</li>
+              <li className="active:text-cyan-400 md:hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">İletişim</li>
+              <li className="active:text-cyan-400 md:hover:text-cyan-400 cursor-pointer transition-colors uppercase tracking-wider">Şubeler</li>
             </ul>
           </div>
 
@@ -48,7 +48,7 @@ export default function Footer() {
                   <a 
                     key={index} 
                     href={social.url} 
-                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black hover:scale-110 transition-all duration-300"
+                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center active:bg-cyan-400 active:text-black active:scale-110 md:hover:bg-cyan-400 md:hover:text-black md:hover:scale-110 transition-all duration-300 touch-manipulation"
                   >
                     {IconComp && <IconComp size={20} />}
                   </a>

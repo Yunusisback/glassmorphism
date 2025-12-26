@@ -7,20 +7,21 @@ export default function VantaScene() {
   const [vantaEffect, setVantaEffect] = useState(null);
 
   
-  useEffect(() => {
-    if (!vantaEffect && vantaRef.current) {
-      const effect = CELLS({
-        el: vantaRef.current,
-        THREE,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 0.6,
-        color1: 0x0e9393,
-        color2: 0x35f2e4,
-        speed: 0.90,
+useEffect(() => {
+  if (!vantaEffect && vantaRef.current) {
+    const effect = CELLS({
+      el: vantaRef.current,
+      THREE,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.0,
+      color1: 0x0f766e,    
+      color2: 0x22d3ee,    
+      size: 2.0,
+      speed: 1.5,
       });
       setVantaEffect(effect);
     }

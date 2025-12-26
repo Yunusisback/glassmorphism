@@ -8,7 +8,6 @@ import Pricing from './components/sections/Pricing';
 import Destinations from './components/sections/Destinations';
 import Sponsors from './components/sections/Sponsors';
 
-
 function App() {
   return (
     <div className="relative min-h-screen w-full bg-black overflow-x-hidden text-white">
@@ -17,13 +16,13 @@ function App() {
       <div className="relative z-10">
         <Navbar />
 
-        <main className="pt-28 pb-20 px-6">
-          <div className="max-w-7xl mx-auto flex flex-col gap-40">
+        <main className="pt-20 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto flex flex-col gap-20 sm:gap-32 md:gap-40">
             <Hero />
             <Steps />
             <Benefits />
             
-            <div className="py-12 border-y border-white/5">
+            <div className="py-8 sm:py-12 border-y border-white/5">
                 <Sponsors />
             </div>
 

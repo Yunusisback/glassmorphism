@@ -11,18 +11,18 @@ function Navbar() {
           <div className="flex items-center justify-between">
 
             {/* Logo Grubu */}
-            <div className="flex items-center gap-3 group cursor-pointer">
+            <div className="flex items-center gap-3 group cursor-pointer active:scale-95 transition-transform select-none -ml-2 pl-2">
 
               {/* İkon Kutusu */}
               <div className="p-1.5 rounded-xl bg-black/30 border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden">
-                <div className="absolute -inset-full bg-linear-to-r from-transparent via-white/10 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out" />
+                <div className="absolute -inset-full bg-linear-to-r from-transparent via-white/10 to-transparent skew-x-12 -translate-x-full group-active:translate-x-full md:group-hover:translate-x-full transition-all duration-1000 ease-in-out" />
                 <Waves size={24} className="text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] relative z-10" />
               </div>
 
               {/* Logo Metni */}
-              <span className="text-xl md:text-3xl font-black tracking-tighter italic">
-                <span className="bg-clip-text text-transparent bg-linear-to-r from-white via-white to-cyan-400">
-                  SeaGlass
+              <span className="text-xl md:text-3xl font-black tracking-tighter italic select-none block overflow-visible">
+                <span className="bg-clip-text text-transparent bg-linear-to-r from-white via-white to-cyan-400 inline-block pl-1 pr-2">
+                 𝚂𝚎𝚊𝙶𝚕𝚊𝚜𝚜
                 </span>
               </span>
             </div>
@@ -33,7 +33,7 @@ function Navbar() {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="  text-[13px] font-bold uppercase tracking-widest text-white/80 hover:text-cyan-800 transition-all duration-300"
+                  className="text-[13px] font-bold uppercase tracking-widest text-white/80 hover:text-cyan-800 transition-all duration-300 active:text-cyan-600"
                 >
                   {item}
                 </a>
@@ -44,21 +44,21 @@ function Navbar() {
             <div className="flex items-center gap-2 md:gap-3">
               
               {/*  Hesabım Butonu */}
-              <button className="cursor-pointer hidden md:flex items-center gap-2 px-5 py-2.5 bg-black/50 hover:bg-black/70 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-500 backdrop-blur-2xl group shadow-xl">
+              <button className="cursor-pointer hidden md:flex items-center gap-2 px-5 py-2.5 bg-black/50 hover:bg-black/70 active:bg-black/70 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-xl border border-white/10 hover:border-cyan-400/50 active:border-cyan-400/50 transition-all duration-500 backdrop-blur-2xl group shadow-xl active:scale-95">
                 <User 
                   size={16} 
-                  className="text-cyan-300 drop-shadow-[0_0_5px_rgba(34,211,238,0.9)] group-hover:scale-110 transition-transform" 
+                  className="text-cyan-300 drop-shadow-[0_0_5px_rgba(34,211,238,0.9)] group-hover:scale-110 group-active:scale-110 transition-transform" 
                 />
-                <span className="group-hover:text-cyan-300 transition-colors">Hesabım</span>
+                <span className="group-hover:text-cyan-300 group-active:text-cyan-300 transition-colors">Hesabım</span>
               </button>
 
-              {/* Sadece Profil İkonu */}
-              <div className="md:hidden w-10 h-10 rounded-xl bg-black/40 flex items-center justify-center border border-white/10 cursor-pointer active:scale-90 transition-all">
+              {/*Profil İkonu */}
+              <div className="md:hidden w-10 h-10 rounded-xl bg-black/40 flex items-center justify-center border border-white/10 cursor-pointer active:scale-90 active:bg-black/60 transition-all touch-manipulation">
                 <User size={20} className="text-cyan-300 drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]" />
               </div>
 
               {/*  Menü */}
-              <button className="md:hidden w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 hover:bg-white/10 transition-colors">
+              <button className="md:hidden w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 active:bg-white/10 active:scale-90 transition-all touch-manipulation">
                 <Menu size={20} className="text-white" />
               </button>
             </div>
